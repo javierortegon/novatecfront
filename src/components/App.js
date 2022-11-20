@@ -1,10 +1,20 @@
+import { Col, Container, Row } from "reactstrap";
+import FormTeacher from "./FormTeacher";
 
 
 function App() {
   return (
-    <div className="App">
-      
-    </div>
+    <>
+      <Container>
+        <Row>
+            <Col md={6}>
+            </Col>
+            <Col md={6}>
+                <FormTeacher></FormTeacher>
+            </Col>
+        </Row>
+      </Container>
+    </>
   );
 }
 
