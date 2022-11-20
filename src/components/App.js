@@ -9,10 +9,8 @@ function App() {
   const [teacherOld, setTeacherOld] = useState("");
 
   const loadTeachers = async () => {
-    await getTeachers().then(function (response) {
-      console.log(response);
-      setTeachers(response);
-    });
+    const dataTeachers = await getTeachers();
+    setTeachers(dataTeachers);
   };
 
   useEffect(() => {
@@ -22,7 +20,7 @@ function App() {
   const onSubmit = async (values) => {
     if (teacherOld !== "") {
     } else {
-      await saveTeacher(values).then();
+      await saveTeacher(values).then(async () => await loadTeachers());
     }
   };
 
