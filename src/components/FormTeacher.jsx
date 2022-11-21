@@ -17,7 +17,6 @@ const FormTeacher = ({ teacherOld, onsubmit }) => {
 
   const _onSubmit = (e) => {
     e.preventDefault();
-    console.log(teacher);
     onsubmit(teacher);
     setTeacher({ ...teacherInit });
   };

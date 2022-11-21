@@ -19,7 +19,6 @@ function App() {
 
   const onSubmit = async (values) => {
     if (teacherOld !== '') {
-      console.log(values)
       await updateTeacher(teacherOld.id,values).then(async () => await loadTeachers());
     } else {
       await saveTeacher(values).then(async () => await loadTeachers());
