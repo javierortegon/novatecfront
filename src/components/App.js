@@ -1,7 +1,7 @@
 import { Col, Container, Row } from "reactstrap";
 import FormTeacher from "./FormTeacher";
 import { useEffect, useState } from "react";
-import { saveTeacher, getTeachers } from "../services/index";
+import { saveTeacher, getTeachers, deleteTeacher, updateTeacher } from "../services/index";
 import ListTeachers from "./ListTeachers";
 
 function App() {
@@ -18,13 +18,17 @@ function App() {
   }, []);
 
   const onSubmit = async (values) => {
-    if (teacherOld !== "") {
+    if (teacherOld !== '') {
+      console.log(values)
+      await updateTeacher(teacherOld.id,values).then(async () => await loadTeachers());
     } else {
       await saveTeacher(values).then(async () => await loadTeachers());
     }
   };
 
-  const deleteTeacher = (teacher) => {};
+  const deleteTeachers = async (teacher) => {
+    await deleteTeacher(teacher).then(async () => await loadTeachers());
+  };
 
   return (
     <>
@@ -33,12 +37,12 @@ function App() {
           <Col md={6}>
             <ListTeachers
               teachers={teachers}
-              onDelete={deleteTeacher}
+              onDelete={deleteTeachers}
               onEdit={(teacherOld) => setTeacherOld(teacherOld)}
             />
           </Col>
           <Col md={6}>
-            <FormTeacher onsubmit={onSubmit}></FormTeacher>
+            <FormTeacher onsubmit={onSubmit} teacherOld={teacherOld}></FormTeacher>
           </Col>
         </Row>
       </Container>

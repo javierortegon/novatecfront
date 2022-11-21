@@ -17,6 +17,7 @@ const FormTeacher = ({ teacherOld, onsubmit }) => {
 
   const _onSubmit = (e) => {
     e.preventDefault();
+    console.log(teacher);
     onsubmit(teacher);
     setTeacher({ ...teacherInit });
   };
@@ -39,6 +40,7 @@ const FormTeacher = ({ teacherOld, onsubmit }) => {
             Name
           </label>
           <input
+            required
             type="text"
             name="name"
             className="form-control"
@@ -56,6 +58,7 @@ const FormTeacher = ({ teacherOld, onsubmit }) => {
             Last Name
           </label>
           <input
+            required
             type="text"
             name="lastName"
             className="form-control"
@@ -69,6 +72,7 @@ const FormTeacher = ({ teacherOld, onsubmit }) => {
             Email
           </label>
           <input
+            required
             type="email"
             name="email"
             className="form-control"
@@ -82,6 +86,7 @@ const FormTeacher = ({ teacherOld, onsubmit }) => {
             Phone
           </label>
           <input
+            required
             type="text"
             name="phone"
             className="form-control"
